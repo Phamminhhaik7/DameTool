@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">DameTool</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_settings">Setting</string>
+    <string name="menu_navigation">gido</string>
+    <string name="menu_navigation_introduce">Intro</string>
+    <string name="menu_navigation_tool">Tool</string>
+    <string name="menu_navigation_setting">Setting</string>
+    <string name="hello">Chào mừng bạn đến với DameConghe!ok</string>
+    <string name="helo1">DameConghe giúp bạn kiếm tiền dễ dàng bằng cách hoàn thành các nhiệm vụ đơn giản như like và follow trên các mạng xã hội phổ biến hiện nay.</string>
+    <string name="hello2">Tính năng nổi bật:</string>
+    <string name="hello3">1. Tự động hoàn thành nhiệm vụ:</string>
+    <string name="hello4">Ứng dụng sẽ tự động thực hiện các nhiệm vụ like, follow mà không cần bạn phải tốn nhiều thời gian.</string>
+    <string name="hello5">2. Dễ dàng kiếm tiền:</string>
+    <string name="hello6">Kiếm tiền thông qua các nền tảng như Facebook, Instagram, TikTok và nhiều nền tảng khác.</string>
+    <string name="hello7">3. Tiết kiệm thời gian:</string>
+    <string name="hello8">Với các tính năng tự động, bạn có thể dễ dàng tận dụng thời gian và tăng thu nhập một cách hiệu quả.</string>
+    <string name="hello9">Ứng dụng đang trong quá trình phát triển, vì vậy DameConghe sẽ cập nhật các tính năng mới và cải thiện hiệu suất.\n Nếu chưa biết cách sử dụng app, hãy xem video hướng dẫn qua các đường link dưới đây. Xin cảm ơn!</string>
+    <string name="accessibility_service_description">Cần quyền trợ năng để auto, Nếu thiết bị của bạn không bật được hãy xem link hướng dẫn </string>
+    <string name="accessibility_service_label">DameTool\n</string>
+</resources>

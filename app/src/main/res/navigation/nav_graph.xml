@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FirstFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.dametool.FirstFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first" >
+        <action
+            android:id="@+id/action_FirstFragment_to_golikeHome"
+            app:destination="@id/golikeHome" />
+        <action
+            android:id="@+id/action_FirstFragment_to_traoDoiSubHome"
+            app:destination="@id/traoDoiSubHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/golikeHome"
+        android:name="com.dametool.GolikeHome"
+        android:label="GolikeHome">
+        <action
+            android:id="@+id/action_golikeHome_to_traoDoiSubHome"
+            app:destination="@id/traoDoiSubHome" />
+        <action
+            android:id="@+id/action_golikeHome_to_traoDoiSubLogin"
+            app:destination="@id/traoDoiSubLogin" />
+    </fragment>
+    <fragment
+        android:id="@+id/traoDoiSubHome"
+        android:name="com.dametool.TraoDoiSubHome"
+        android:label="traodoisub_home"
+        tools:layout="@layout/traodoisub_home" >
+        <action
+            android:id="@+id/action_traoDoiSubHome_to_golikeHome"
+            app:destination="@id/golikeHome" />
+        <action
+            android:id="@+id/action_traoDoiSubHome_to_traoDoiSubLogin"
+            app:destination="@id/traoDoiSubLogin" />
+    </fragment>
+    <fragment
+        android:id="@+id/traoDoiSubLogin"
+        android:name="com.dametool.TraoDoiSubLogin"
+        android:label="traodoisub_login"
+        tools:layout="@layout/traodoisub_login" >
+        <action
+            android:id="@+id/action_traoDoiSubLogin_to_traoDoiSubHome"
+            app:destination="@id/traoDoiSubHome" />
+        <action
+            android:id="@+id/action_traoDoiSubLogin_to_golikeHome"
+            app:destination="@id/golikeHome" />
+    </fragment>
+</navigation>
