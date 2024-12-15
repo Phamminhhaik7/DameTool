@@ -208,8 +208,6 @@ class TraoDoiSubTikTokFloating : Service() {
                 val intent = Intent(this, ToaDoLikeTikTok::class.java)
                 stopService(intent)
             }
-//            val intent = Intent("FIND_Like")
-//            LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
 
         }
 
