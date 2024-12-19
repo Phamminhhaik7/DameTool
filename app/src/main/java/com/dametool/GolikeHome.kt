@@ -23,14 +23,20 @@ class GolikeHome : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.TraoDoiSubHome.setOnClickListener {
+        binding.included.TraoDoiSubHome.setOnClickListener {
             toolinuse = TraoDoiSubHome()
             (activity as MainActivity).supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, toolinuse)
                 .commit()
         }
-        binding.TuongTacCheoHome.setOnClickListener {
+        binding.included.TuongTacCheoHome.setOnClickListener {
             toolinuse = TuongTacCheoHome()
+            (activity as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, toolinuse)
+                .commit()
+        }
+        binding.GolikeTiktok.setOnClickListener {
+            toolinuse = GolikeTiktok()
             (activity as MainActivity).supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, toolinuse)
                 .commit()

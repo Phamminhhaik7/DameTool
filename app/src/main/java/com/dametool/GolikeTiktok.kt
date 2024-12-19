@@ -1,15 +1,17 @@
 package com.dametool
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.dametool.databinding.GolikeLoginBinding
+import com.dametool.databinding.GolikeTiktokBinding
 
-class GolikeLogin : Fragment() {
+class GolikeTiktok : Fragment() {
 
-    private var _binding : GolikeLoginBinding? = null
+    private var _binding: GolikeTiktokBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -17,41 +19,41 @@ class GolikeLogin : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = GolikeLoginBinding.inflate(inflater, container, false)
+        _binding = GolikeTiktokBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        toolinuse = GolikeLogin()
         binding.included.TraoDoiSubHome.setOnClickListener {
             toolinuse = TraoDoiSubHome()
             (activity as MainActivity).supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, toolinuse)
-                .addToBackStack(null)
                 .commit()
         }
         binding.included.TuongTacCheoHome.setOnClickListener {
             toolinuse = TuongTacCheoHome()
             (activity as MainActivity).supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, toolinuse)
-                .addToBackStack(null)
                 .commit()
         }
-        binding.GolikeLogin.setOnClickListener {
-            val authorization = binding.GolikeAuthorization.editText?.text.toString()
-            if (authorization.isEmpty()) {
-                return@setOnClickListener
-            }
-
-
+        binding.included.GolikeHome.setOnClickListener {
+            toolinuse = GolikeHome()
+            (activity as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, toolinuse)
+                .commit()
         }
-
-
+        binding.StartGolikeTiktok.setOnClickListener {
+          startFloatingService(GolikeTikTokFloating())
+        }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
+    fun startFloatingService(context: Context) {
+        val intent = Intent(context, TraoDoiSubTikTokFloating::class.java)
+        context.startService(intent)
+    }
 }

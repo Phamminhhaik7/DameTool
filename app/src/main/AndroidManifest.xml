@@ -37,6 +37,9 @@
         <service android:name=".TraoDoiSubInstragramFloating"
             android:permission="android.permission.SYSTEM_ALERT_WINDOW"
             android:exported="false" />
+        <service android:name=".GolikeTikTokFloating"
+            android:permission="android.permission.SYSTEM_ALERT_WINDOW"
+            android:exported="false" />
         <service android:name=".ToaDoFollowTikTok"
             android:permission="android.permission.SYSTEM_ALERT_WINDOW"
             android:exported="false" />
