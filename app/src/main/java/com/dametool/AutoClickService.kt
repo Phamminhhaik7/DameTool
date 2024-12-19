@@ -56,6 +56,11 @@ class AutoClickService : AccessibilityService() {
                     println("Start searching")
                     findAndClickText(rootInActiveWindow,"Theo dõi")
                 }
+                if (intent?.action == "FIND_Text") {
+                    println("Start searching")
+                    var text = intent.getStringExtra("text")
+                    findAndClickText(rootInActiveWindow,text!!)
+                }
                 if (intent?.action == "FIND_THICHINSTAGRAM") {
                     println("Start searching")
                     findElementByContentDescription(rootInActiveWindow,"Thích","ACTION_CLICK")
@@ -83,6 +88,8 @@ class AutoClickService : AccessibilityService() {
         localBroadcastManager.registerReceiver(clickReceiver, IntentFilter("FIND_FOLLOWFACEBOOK"))
         localBroadcastManager.registerReceiver(clickReceiver, IntentFilter("FIND_THEODOIINSTAGRAM"))
         localBroadcastManager.registerReceiver(clickReceiver, IntentFilter("FIND_THICHINSTAGRAM"))
+        localBroadcastManager.registerReceiver(clickReceiver, IntentFilter("FIND_Text"))
+
     }
 
     override fun onDestroy() {
@@ -160,7 +167,7 @@ class AutoClickService : AccessibilityService() {
                         println("Position of node: left=${rect.left}, top=${rect.top}, right=${rect.right}, bottom=${rect.bottom}")
 
                         print(it)
-                        performClick(rect.centerX().toFloat(), rect.centerY().toFloat(), 100)
+                        performClick(rect.centerX().toFloat(), rect.centerY().toFloat(), 300)
                         return@launch
                     } else {
                         println("Không tìm thấy node có textcontent là $textcontent")
@@ -192,7 +199,7 @@ class AutoClickService : AccessibilityService() {
                 currentNode.getBoundsInScreen(rect)
                 println("Position of third node: left=${rect.left}, top=${rect.top}, right=${rect.right}, bottom=${rect.bottom}")
                 println(currentNode)
-                performClick(rect.centerX().toFloat(), rect.centerY().toFloat(), 100)
+                performClick(rect.centerX().toFloat(), rect.centerY().toFloat(), 300)
             }
 
             // Tiếp tục tìm kiếm các node con
@@ -218,7 +225,7 @@ class AutoClickService : AccessibilityService() {
                         val rect = android.graphics.Rect()
                         it.getBoundsInScreen(rect)
                         println("Position of node: left=${rect.left}, top=${rect.top}, right=${rect.right}, bottom=${rect.bottom}")
-                        performClick(rect.centerX().toFloat(), rect.centerY().toFloat(), 100)
+                        performClick(rect.centerX().toFloat(), rect.centerY().toFloat(), 300)
                         return@launch
                     }
                     if (description != null && description.toString() == contentDesc) {
@@ -230,15 +237,15 @@ class AutoClickService : AccessibilityService() {
 
                         print(it)
                         when (type) {
-                            "LIKE" -> performClick(rect.centerX().toFloat(), rect.centerY().toFloat(), 100)
+                            "LIKE" -> performClick(rect.centerX().toFloat(), rect.centerY().toFloat(), 300)
                             "LOVE" -> performClick(rect.centerX().toFloat(), rect.centerY().toFloat(), 1000L)
                             "WOW" -> performClick(rect.centerX().toFloat(), rect.centerY().toFloat(), 1000)
                             "HAHA" -> performClick(rect.centerX().toFloat(), rect.centerY().toFloat(), 1000)
                             "ANGRY" -> performClick(rect.centerX().toFloat(), rect.centerY().toFloat(), 1000)
                             "SAD" -> performClick(rect.centerX().toFloat(), rect.centerY().toFloat(), 1000)
-                            "ACTION_CLICK" -> performClick(rect.centerX().toFloat(), rect.centerY().toFloat(), 100)
+                            "ACTION_CLICK" -> performClick(rect.centerX().toFloat(), rect.centerY().toFloat(), 300)
                             "Click" -> {
-                                performClick((rect.centerX() + 50).toFloat(), (rect.centerY() + 50).toFloat(), 100L)
+                                performClick((rect.centerX() + 50).toFloat(), (rect.centerY() + 50).toFloat(), 300L)
                                 println("Position of node: left=${rect.left}, top=${rect.top}, right=${rect.right}, bottom=${rect.bottom}")
                             }
                         }

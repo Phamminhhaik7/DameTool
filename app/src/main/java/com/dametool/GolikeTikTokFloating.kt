@@ -182,6 +182,14 @@ class GolikeTikTokFloating : Service() {
         val autoLike = floatingView.findViewById<Switch>(R.id.autolike)
 
         autoFollow.setOnCheckedChangeListener { _, isChecked ->
+            val intent = Intent("AUTO_CLICK_ACTION")
+            println(liketiktokx)
+            println(liketiktoky)
+            println(followtiktokx)
+            println(followtiktoky)
+            intent.putExtra("x", followtiktokx)
+            intent.putExtra("y", followtiktoky)
+            LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
             autofollow = isChecked
             if (autofollow) {
                 val intent = Intent(this, ToaDoFollowTikTok::class.java)
@@ -192,6 +200,9 @@ class GolikeTikTokFloating : Service() {
             }
         }
         autoLike.setOnCheckedChangeListener { _, isChecked ->
+            val intent = Intent("FIND_Text")
+            intent.putExtra("text", "Hoàn thành")
+            LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
             autolike = isChecked
             if (autolike) {
                 val intent = Intent(this, ToaDoLikeTikTok::class.java)
@@ -207,17 +218,15 @@ class GolikeTikTokFloating : Service() {
         val nickchay = floatingView.findViewById<TextView>(R.id.nickdangchay)
         nickchay.text = "Nick đang chạy: $namenickrun"
         nickchay.setOnClickListener{
-            val intent = Intent("AUTO_CLICK_ACTION")
-            println(liketiktokx)
-            println(liketiktoky)
-            println(followtiktokx)
-            println(followtiktoky)
-            intent.putExtra("x", followtiktokx)
-            intent.putExtra("y", followtiktoky)
+            val intent = Intent("FIND_Text")
+            intent.putExtra("text", "Nhận Job ngay")
             LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
         }
         val run = floatingView.findViewById<Switch>(R.id.run)
         run.setOnCheckedChangeListener { _, isChecked ->
+            val intent = Intent("FIND_Text")
+            intent.putExtra("text", "TikTok")
+            LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
             runstatus = isChecked
             if(runstatus){
                 if(loaijob == "Follow"){

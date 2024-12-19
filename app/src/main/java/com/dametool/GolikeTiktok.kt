@@ -44,7 +44,7 @@ class GolikeTiktok : Fragment() {
                 .commit()
         }
         binding.StartGolikeTiktok.setOnClickListener {
-          startFloatingService(GolikeTikTokFloating())
+            startFloatingService(requireContext())
         }
     }
 
@@ -53,7 +53,7 @@ class GolikeTiktok : Fragment() {
         _binding = null
     }
     fun startFloatingService(context: Context) {
-        val intent = Intent(context, TraoDoiSubTikTokFloating::class.java)
+        val intent = Intent(context, GolikeTikTokFloating::class.java)
         context.startService(intent)
     }
 }
