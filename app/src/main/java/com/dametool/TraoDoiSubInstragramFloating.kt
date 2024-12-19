@@ -199,7 +199,7 @@ class TraoDoiSubInstragramFloating : Service() {
         run.setOnCheckedChangeListener { _, isChecked ->
             runstatus = isChecked
             if(runstatus){
-                if(loaijob == "Follow"){
+                if(loaijobins == "Follow"){
                     TraoDoiSubInstragramFollow()
                 } else {
                     TraoDoiSubInstragramLike()

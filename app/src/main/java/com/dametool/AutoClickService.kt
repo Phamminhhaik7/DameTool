@@ -25,10 +25,10 @@ class AutoClickService : AccessibilityService() {
         override fun onReceive(context: Context?, intent: Intent?) {
             try{
                 if (intent?.action == "AUTO_CLICK_ACTION") {
-                    println("Received click event at x=$toadox, y=$toadoy")
-                    val x = intent.getFloatExtra("x", 0f)
-                    val y = intent.getFloatExtra("y", 0f)
-                    performClick(x, y, 100)
+                    var x = intent.getFloatExtra("x", 0f)
+                    var y = intent.getFloatExtra("y", 0f)
+                    println("Received click event at x=$x, y=$y")
+                    performClick(x, y, 300)
                 }
                 if (intent?.action == "FIND_REACTION") {
                     println("Start searching")

@@ -318,10 +318,14 @@ class TraoDoiSubTikTokFloating : Service() {
                         }
                         if (!runstatus) { return@launch }
                         if(autofollow){
-                            val click = Intent("AUTO_CLICK_ACTION")
+                            val intent = Intent("AUTO_CLICK_ACTION")
+                            println(liketiktokx)
+                            println(liketiktoky)
+                            println(followtiktokx)
+                            println(followtiktoky)
                             intent.putExtra("x", followtiktokx)
                             intent.putExtra("y", followtiktoky)
-                            LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(click)
+                            LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
                             withContext(Dispatchers.Main){ messagetext.text = "Thực hiện click!" }
                             sleep(2000)
                         }
@@ -426,10 +430,14 @@ class TraoDoiSubTikTokFloating : Service() {
                         }
                         if (!runstatus) { return@launch }
                         if(autolike){
-                            val click = Intent("AUTO_CLICK_ACTION")
+                            val intent = Intent("AUTO_CLICK_ACTION")
+                            println(liketiktokx)
+                            println(liketiktoky)
+                            println(followtiktokx)
+                            println(followtiktoky)
                             intent.putExtra("x", liketiktokx)
                             intent.putExtra("y", liketiktoky)
-                            LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(click)
+                            LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
                             withContext(Dispatchers.Main){ messagetext.text = "Thực hiện click!" }
                             sleep(2000)
                         }

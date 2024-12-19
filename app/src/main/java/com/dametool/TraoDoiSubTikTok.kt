@@ -122,8 +122,8 @@ class TraoDoiSubTikTok : Fragment() {
         val badgeContents2 = listOf("Follow", "Like")
         spinner2.setItems(badgeContents2)
         spinner2.setOnItemSelectedListener { _, _, _, item ->
-            loaijob = item.toString()
-            println(loaijob)
+            loaijobins = item.toString()
+            println(loaijobins)
         }
         binding.TraoDoiSubTikTokStart.setOnClickListener {
             maxjob = binding.TraoDoiSubTikTokMaxJob.editText?.text.toString().toIntOrNull() ?: 0

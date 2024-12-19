@@ -9,6 +9,7 @@ var toolinuse :Fragment = TraoDoiSubHome()
 var token = "token"
 var namenickrun = "username"
 var loaijob = "Follow"
+var loaijobins = "Follow"
 var maxjob = 0
 var countdown = 0
 var demjob = 0
