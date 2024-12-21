@@ -145,8 +145,8 @@ class TraoDoiSubInstragramFloating : Service() {
                 put("getjobtiktokx", getjobtiktokx ?: JSONObject.NULL)
                 put("getjobtiktoky", getjobtiktoky ?: JSONObject.NULL)
 
-                put("hoanthanhjobtiktokx", hoanthanhjobtiktokx ?: JSONObject.NULL)
-                put("hoanthanhjobtiktoky", hoanthanhjobtiktoky ?: JSONObject.NULL)
+                put("hoanthanhjobtiktokx", hoanthanhjobngayx ?: JSONObject.NULL)
+                put("hoanthanhjobtiktoky", hoanthanhjobngayy ?: JSONObject.NULL)
 
                 put("dongyhoanthanhjobx", dongyhoanthanhjobx ?: JSONObject.NULL)
                 put("dongyhoanthanhjoby", dongyhoanthanhjoby ?: JSONObject.NULL)

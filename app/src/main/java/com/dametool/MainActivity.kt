@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
             followtiktokx = jsonObject.optInt("followtiktokx").toFloat()
             followtiktoky = jsonObject.optInt("followtiktoky").toFloat()
 
-
             toadohandfollowtiktokx = jsonObject.optInt("toadohandx").toFloat()
             toadohandfollowtiktoky = jsonObject.optInt("toadohandy").toFloat()
 
@@ -45,7 +44,7 @@ class MainActivity : AppCompatActivity() {
             liketiktoky = jsonObject.optInt("liketiktoky").toFloat()
             toadohandliketiktokx = jsonObject.optInt("toadohandliketiktokx").toFloat()
             toadohandliketiktoky = jsonObject.optInt("toadohandliketiktoky").toFloat()
-            println("followtiktokx: $liketiktokx")
+
             theodoiinstagramx = jsonObject.optInt("theodoiinstagramx").toFloat()
             theodoiinstagramy = jsonObject.optInt("theodoiinstagramy").toFloat()
             toadohandtheodoiinstagramx = jsonObject.optInt("toadohandtheodoiinstagramx").toFloat()
@@ -63,8 +62,8 @@ class MainActivity : AppCompatActivity() {
             getjobtiktokx = jsonObject.optInt("getjobtiktokx").toFloat()
             getjobtiktoky = jsonObject.optInt("getjobtiktoky").toFloat()
 
-            hoanthanhjobtiktokx = jsonObject.optInt("hoanthanhjobtiktokx").toFloat()
-            hoanthanhjobtiktoky = jsonObject.optInt("hoanthanhjobtiktoky").toFloat()
+            hoanthanhjobngayx = jsonObject.optInt("hoanthanhjobngayx").toFloat()
+            hoanthanhjobngayy = jsonObject.optInt("hoanthanhjobngayy").toFloat()
 
             dongyhoanthanhjobx = jsonObject.optInt("dongyhoanthanhjobx").toFloat()
             dongyhoanthanhjoby = jsonObject.optInt("dongyhoanthanhjoby").toFloat()
@@ -87,7 +86,21 @@ class MainActivity : AppCompatActivity() {
             dongybaocaoloix = jsonObject.optInt("dongybaocaoloix").toFloat()
             dongybaocaoloiy = jsonObject.optInt("dongybaocaoloiy").toFloat()
 
+            // Bổ sung các biến bị thiếu
+            dahieux = jsonObject.optInt("dahieux").toFloat()
+            dahieuy = jsonObject.optInt("dahieuy").toFloat()
+            homex = jsonObject.optInt("homex").toFloat()
+            homey = jsonObject.optInt("homey").toFloat()
+            kiemthuongx = jsonObject.optInt("kiemthuongx").toFloat()
+            kiemthuongy = jsonObject.optInt("kiemthuongy").toFloat()
+            tiktokx = jsonObject.optInt("tiktokx").toFloat()
+            tiktoky = jsonObject.optInt("tiktoky").toFloat()
+            chontaikhoan = jsonObject.optInt("chontaikhoan").toFloat()
+            chontaikhoany = jsonObject.optInt("chontaikhoany").toFloat()
+            okthongbaox = jsonObject.optInt("okthongbaox").toFloat()
+            okthongbaoy = jsonObject.optInt("okthongbaoy").toFloat()
         }
+
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         supportFragmentManager.beginTransaction().replace(R.id.fragment_container, firstFragment).commit()
 

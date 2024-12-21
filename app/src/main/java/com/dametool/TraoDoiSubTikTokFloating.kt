@@ -120,10 +120,8 @@ class TraoDoiSubTikTokFloating : Service() {
                 put("followtiktoky", followtiktoky ?: JSONObject.NULL)
                 put("toadohandx", toadohandfollowtiktokx ?: JSONObject.NULL)
                 put("toadohandy", toadohandfollowtiktoky ?: JSONObject.NULL)
-
                 put("liketiktokx", liketiktokx ?: JSONObject.NULL)
                 put("liketiktoky", liketiktoky ?: JSONObject.NULL)
-
 
                 put("toadohandliketiktokx", toadohandliketiktokx ?: JSONObject.NULL)
                 put("toadohandliketiktoky", toadohandliketiktoky ?: JSONObject.NULL)
@@ -145,8 +143,8 @@ class TraoDoiSubTikTokFloating : Service() {
                 put("getjobtiktokx", getjobtiktokx ?: JSONObject.NULL)
                 put("getjobtiktoky", getjobtiktoky ?: JSONObject.NULL)
 
-                put("hoanthanhjobtiktokx", hoanthanhjobtiktokx ?: JSONObject.NULL)
-                put("hoanthanhjobtiktoky", hoanthanhjobtiktoky ?: JSONObject.NULL)
+                put("hoanthanhjobtiktokx", hoanthanhjobngayx ?: JSONObject.NULL)
+                put("hoanthanhjobtiktoky", hoanthanhjobngayy ?: JSONObject.NULL)
 
                 put("dongyhoanthanhjobx", dongyhoanthanhjobx ?: JSONObject.NULL)
                 put("dongyhoanthanhjoby", dongyhoanthanhjoby ?: JSONObject.NULL)
@@ -155,21 +153,35 @@ class TraoDoiSubTikTokFloating : Service() {
                 put("hoanhthanhloitiktoky", hoanhthanhloitiktoky ?: JSONObject.NULL)
 
                 put("baoloitiktokx", baoloitiktokx ?: JSONObject.NULL)
-
                 put("baoloitiktoky", baoloitiktoky ?: JSONObject.NULL)
+
                 put("selectloix", selectloix ?: JSONObject.NULL)
-
                 put("selectloiy", selectloiy ?: JSONObject.NULL)
+
                 put("scrolltosendloix", scrolltosendloix ?: JSONObject.NULL)
-
                 put("scrolltosendloiy", scrolltosendloiy ?: JSONObject.NULL)
+
                 put("guibaocaoloix", guibaocaoloix ?: JSONObject.NULL)
-
                 put("guibaocaoloiy", guibaocaoloiy ?: JSONObject.NULL)
-                put("dongybaocaoloix", dongybaocaoloix ?: JSONObject.NULL)
 
+                put("dongybaocaoloix", dongybaocaoloix ?: JSONObject.NULL)
                 put("dongybaocaoloiy", dongybaocaoloiy ?: JSONObject.NULL)
+
+                // Bổ sung các biến bị thiếu
+                put("dahieux", dahieux ?: JSONObject.NULL)
+                put("dahieuy", dahieuy ?: JSONObject.NULL)
+                put("homex", homex ?: JSONObject.NULL)
+                put("homey", homey ?: JSONObject.NULL)
+                put("kiemthuongx", kiemthuongx ?: JSONObject.NULL)
+                put("kiemthuongy", kiemthuongy ?: JSONObject.NULL)
+                put("tiktokx", tiktokx ?: JSONObject.NULL)
+                put("tiktoky", tiktoky ?: JSONObject.NULL)
+                put("chontaikhoan", chontaikhoan ?: JSONObject.NULL)
+                put("chontaikhoany", chontaikhoany ?: JSONObject.NULL)
+                put("okthongbaox", okthongbaox ?: JSONObject.NULL)
+                put("okthongbaoy", okthongbaoy ?: JSONObject.NULL)
             }
+
             try {
                 FileWriter(jsonFile).use { writer ->
                     writer.write(saveconfig.toString())
@@ -214,16 +226,6 @@ class TraoDoiSubTikTokFloating : Service() {
 
         val nickchay = floatingView.findViewById<TextView>(R.id.nickdangchay)
         nickchay.text = "Nick đang chạy: $namenickrun"
-        nickchay.setOnClickListener{
-            val intent = Intent("AUTO_CLICK_ACTION")
-            println(liketiktokx)
-            println(liketiktoky)
-            println(followtiktokx)
-            println(followtiktoky)
-            intent.putExtra("x", followtiktokx)
-            intent.putExtra("y", followtiktoky)
-            LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
-        }
         val run = floatingView.findViewById<Switch>(R.id.run)
         run.setOnCheckedChangeListener { _, isChecked ->
             runstatus = isChecked

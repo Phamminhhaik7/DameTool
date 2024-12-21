@@ -165,9 +165,17 @@ class AutoClickService : AccessibilityService() {
                         // Lấy tọa độ của childNode chứ không phải node cha
                         it.getBoundsInScreen(rect)
                         println("Position of node: left=${rect.left}, top=${rect.top}, right=${rect.right}, bottom=${rect.bottom}")
-
-                        print(it)
-                        performClick(rect.centerX().toFloat(), rect.centerY().toFloat(), 300)
+                        val x =rect.centerX().toFloat()
+                        val y =rect.centerY().toFloat()
+                        performClick(x, y, 300)
+                        if(text == "Đã hiểu"){dahieux = x;dahieuy = y}
+                        if(text == "Home"){homex = x;homey = y}
+                        if(text == "Đồng ý"){dongydahieux = x;dongydahieuy = y}
+                        if(text == "Nhận Job ngay"){nhanjobngayx = x;nhanjobngayy = y}
+                        if(text == "TikTok"){getjobtiktokx = x;getjobtiktoky = y}
+                        if(text == "Hoàn thành"){hoanthanhjobngayx = x;hoanthanhjobngayy = y}
+                        if(text == "OK"){dongyhoanthanhjobx = x;dongyhoanthanhjoby = y}
+                        if(text == "Tiktok"){tiktokx = x;tiktoky = y}
                         return@launch
                     } else {
                         println("Không tìm thấy node có textcontent là $textcontent")

@@ -17,6 +17,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -112,10 +114,8 @@ class GolikeTikTokFloating : Service() {
                 put("followtiktoky", followtiktoky ?: JSONObject.NULL)
                 put("toadohandx", toadohandfollowtiktokx ?: JSONObject.NULL)
                 put("toadohandy", toadohandfollowtiktoky ?: JSONObject.NULL)
-
                 put("liketiktokx", liketiktokx ?: JSONObject.NULL)
                 put("liketiktoky", liketiktoky ?: JSONObject.NULL)
-
 
                 put("toadohandliketiktokx", toadohandliketiktokx ?: JSONObject.NULL)
                 put("toadohandliketiktoky", toadohandliketiktoky ?: JSONObject.NULL)
@@ -137,8 +137,8 @@ class GolikeTikTokFloating : Service() {
                 put("getjobtiktokx", getjobtiktokx ?: JSONObject.NULL)
                 put("getjobtiktoky", getjobtiktoky ?: JSONObject.NULL)
 
-                put("hoanthanhjobtiktokx", hoanthanhjobtiktokx ?: JSONObject.NULL)
-                put("hoanthanhjobtiktoky", hoanthanhjobtiktoky ?: JSONObject.NULL)
+                put("hoanthanhjobtiktokx", hoanthanhjobngayx ?: JSONObject.NULL)
+                put("hoanthanhjobtiktoky", hoanthanhjobngayy ?: JSONObject.NULL)
 
                 put("dongyhoanthanhjobx", dongyhoanthanhjobx ?: JSONObject.NULL)
                 put("dongyhoanthanhjoby", dongyhoanthanhjoby ?: JSONObject.NULL)
@@ -147,21 +147,35 @@ class GolikeTikTokFloating : Service() {
                 put("hoanhthanhloitiktoky", hoanhthanhloitiktoky ?: JSONObject.NULL)
 
                 put("baoloitiktokx", baoloitiktokx ?: JSONObject.NULL)
-
                 put("baoloitiktoky", baoloitiktoky ?: JSONObject.NULL)
+
                 put("selectloix", selectloix ?: JSONObject.NULL)
-
                 put("selectloiy", selectloiy ?: JSONObject.NULL)
+
                 put("scrolltosendloix", scrolltosendloix ?: JSONObject.NULL)
-
                 put("scrolltosendloiy", scrolltosendloiy ?: JSONObject.NULL)
+
                 put("guibaocaoloix", guibaocaoloix ?: JSONObject.NULL)
-
                 put("guibaocaoloiy", guibaocaoloiy ?: JSONObject.NULL)
-                put("dongybaocaoloix", dongybaocaoloix ?: JSONObject.NULL)
 
+                put("dongybaocaoloix", dongybaocaoloix ?: JSONObject.NULL)
                 put("dongybaocaoloiy", dongybaocaoloiy ?: JSONObject.NULL)
+
+                // Bổ sung các biến bị thiếu
+                put("dahieux", dahieux ?: JSONObject.NULL)
+                put("dahieuy", dahieuy ?: JSONObject.NULL)
+                put("homex", homex ?: JSONObject.NULL)
+                put("homey", homey ?: JSONObject.NULL)
+                put("kiemthuongx", kiemthuongx ?: JSONObject.NULL)
+                put("kiemthuongy", kiemthuongy ?: JSONObject.NULL)
+                put("tiktokx", tiktokx ?: JSONObject.NULL)
+                put("tiktoky", tiktoky ?: JSONObject.NULL)
+                put("chontaikhoan", chontaikhoan ?: JSONObject.NULL)
+                put("chontaikhoany", chontaikhoany ?: JSONObject.NULL)
+                put("okthongbaox", okthongbaox ?: JSONObject.NULL)
+                put("okthongbaoy", okthongbaoy ?: JSONObject.NULL)
             }
+
             try {
                 FileWriter(jsonFile).use { writer ->
                     writer.write(saveconfig.toString())
@@ -200,9 +214,6 @@ class GolikeTikTokFloating : Service() {
             }
         }
         autoLike.setOnCheckedChangeListener { _, isChecked ->
-            val intent = Intent("FIND_Text")
-            intent.putExtra("text", "Hoàn thành")
-            LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
             autolike = isChecked
             if (autolike) {
                 val intent = Intent(this, ToaDoLikeTikTok::class.java)
@@ -217,27 +228,90 @@ class GolikeTikTokFloating : Service() {
 
         val nickchay = floatingView.findViewById<TextView>(R.id.nickdangchay)
         nickchay.text = "Nick đang chạy: $namenickrun"
-        nickchay.setOnClickListener{
-            val intent = Intent("FIND_Text")
-            intent.putExtra("text", "Nhận Job ngay")
-            LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
-        }
+
         val run = floatingView.findViewById<Switch>(R.id.run)
         run.setOnCheckedChangeListener { _, isChecked ->
-            val intent = Intent("FIND_Text")
-            intent.putExtra("text", "TikTok")
-            LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
             runstatus = isChecked
             if(runstatus){
-                if(loaijob == "Follow"){
-                    //TraoDoiSubTikTokFollow()
-                } else {
-                    //TraoDoiSubTikTokLike()
+                serviceScope.launch {
+                    delay(2000)
+                    daHieu()
+                    delay(2000)
+                    Home()
+                    delay(2000)
+                    Kiemthuong()
+                    delay(2000)
+                    Tiktok()
                 }
             }
         }
     }
+    private fun daHieu(){
+        if (dahieux == 0f ){
+            val intent = Intent("FIND_Text")
+            intent.putExtra("text", "Đã hiểu")
+            LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
+        }else{
+            val intent = Intent("AUTO_CLICK_ACTION")
+            intent.putExtra("x", dahieux)
+            intent.putExtra("y", dahieuy)
+            LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
+        }
+    }
+    private fun Home(){
+        if (homex == 0f ){
+            val intent = Intent("FIND_Text")
+            intent.putExtra("text", "Home")
+            LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
+        }else{
+            val intent = Intent("AUTO_CLICK_ACTION")
+            intent.putExtra("x", homex)
+            intent.putExtra("y", homey)
+            LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
+        }
+    }
+    private fun Kiemthuong(){
+        if (kiemthuongx == 0f ){
+            val intent = Intent("FIND_Text")
+            intent.putExtra("text", "Kiếm Thưởng")
+            LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
+        }else{
+            val intent = Intent("AUTO_CLICK_ACTION")
+            intent.putExtra("x", kiemthuongx)
+            intent.putExtra("y", kiemthuongy)
+            LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
+        }
+    }
+    private fun Tiktok(){
+        if (tiktokx == 0f ){
+            val intent = Intent("FIND_Text")
+            intent.putExtra("text", "Tiktok")
+            LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
+        }else{
+            val intent = Intent("AUTO_CLICK_ACTION")
+            intent.putExtra("x", tiktokx)
+            intent.putExtra("y", tiktoky)
+            LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
+        }
+    }
+    private suspend fun requests(url: URL): StringBuilder {
+        val response = StringBuilder()
+        withContext(Dispatchers.IO) {
+            with(url.openConnection() as HttpURLConnection) {
+                requestMethod = "GET"
+                println("\nSent 'GET' request to URL : $url; Response Code : $responseCode")
+                // Đọc toàn bộ dữ liệu từ inputStream
+                val reader: BufferedReader = inputStream.bufferedReader()
 
+                var line: String?
+                while (reader.readLine().also { line = it } != null) {
+                    response.append(line)
+                }
+                reader.close()
+            }
+        }
+        return response
+    }
 
 
 
@@ -265,24 +339,6 @@ class GolikeTikTokFloating : Service() {
     }
 
 
-    private suspend fun requests(url: URL): StringBuilder {
-        val response = StringBuilder()
-        withContext(Dispatchers.IO) {
-            with(url.openConnection() as HttpURLConnection) {
-                requestMethod = "GET"
-                println("\nSent 'GET' request to URL : $url; Response Code : $responseCode")
-                // Đọc toàn bộ dữ liệu từ inputStream
-                val reader: BufferedReader = inputStream.bufferedReader()
-
-                var line: String?
-                while (reader.readLine().also { line = it } != null) {
-                    response.append(line)
-                }
-                reader.close()
-            }
-        }
-        return response
-    }
 
 
 }
