@@ -49,4 +49,6 @@ dependencies {
     implementation(libs.json)
     implementation(libs.jsoup)
     implementation(libs.material.spinner)
+    //implementation (libs.text.recognition)
+
 }

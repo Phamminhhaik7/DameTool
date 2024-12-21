@@ -242,6 +242,8 @@ class GolikeTikTokFloating : Service() {
                     Kiemthuong()
                     delay(2000)
                     Tiktok()
+                    delay(2000)
+                    Nhanjobngay()
                 }
             }
         }
@@ -259,7 +261,7 @@ class GolikeTikTokFloating : Service() {
         }
     }
     private fun Home(){
-        if (homex == 0f ){
+        if (homex == 0.0f ){
             val intent = Intent("FIND_Text")
             intent.putExtra("text", "Home")
             LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
@@ -271,7 +273,7 @@ class GolikeTikTokFloating : Service() {
         }
     }
     private fun Kiemthuong(){
-        if (kiemthuongx == 0f ){
+        if (kiemthuongx == 0.0f ){
             val intent = Intent("FIND_Text")
             intent.putExtra("text", "Kiếm Thưởng")
             LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
@@ -283,7 +285,7 @@ class GolikeTikTokFloating : Service() {
         }
     }
     private fun Tiktok(){
-        if (tiktokx == 0f ){
+        if (tiktokx == 0.0f ){
             val intent = Intent("FIND_Text")
             intent.putExtra("text", "Tiktok")
             LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
@@ -291,6 +293,18 @@ class GolikeTikTokFloating : Service() {
             val intent = Intent("AUTO_CLICK_ACTION")
             intent.putExtra("x", tiktokx)
             intent.putExtra("y", tiktoky)
+            LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
+        }
+    }
+    private fun Nhanjobngay(){
+        if (nhanjobngayx == 0.0f ){
+            val intent = Intent("FIND_Text")
+            intent.putExtra("text", "Nhận Job ngay")
+            LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
+        }else{
+            val intent = Intent("AUTO_CLICK_ACTION")
+            intent.putExtra("x", nhanjobngayx)
+            intent.putExtra("y", nhanjobngayy)
             LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
         }
     }

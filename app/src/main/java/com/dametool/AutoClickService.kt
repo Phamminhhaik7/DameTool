@@ -170,6 +170,7 @@ class AutoClickService : AccessibilityService() {
                         performClick(x, y, 300)
                         if(text == "Đã hiểu"){dahieux = x;dahieuy = y}
                         if(text == "Home"){homex = x;homey = y}
+                        if(text == "Kiếm Thưởng"){kiemthuongx = x;kiemthuongy = y}
                         if(text == "Đồng ý"){dongydahieux = x;dongydahieuy = y}
                         if(text == "Nhận Job ngay"){nhanjobngayx = x;nhanjobngayy = y}
                         if(text == "TikTok"){getjobtiktokx = x;getjobtiktoky = y}

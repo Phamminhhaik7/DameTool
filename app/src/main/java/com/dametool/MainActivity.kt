@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity() {
             okthongbaox = jsonObject.optInt("okthongbaox").toFloat()
             okthongbaoy = jsonObject.optInt("okthongbaoy").toFloat()
         }
-
+        println("tiktokx:$tiktokx")
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         supportFragmentManager.beginTransaction().replace(R.id.fragment_container, firstFragment).commit()
 
